@@ -4,6 +4,9 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
+import cl.ucn.solucion.strategy;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +19,10 @@ public class GerenciadorDescuento {
         // Descuento por cumpleaños -- 100
         // Descuento por categoria casa (hay un producto en esta categoria) -- 200
         // Descuento por cantidad de productos > 2 productos -- 100
+        strategy descCantidad = new descCantidad();
+        strategy descCasa = new descCasa();
+        strategy descCumple = new descCumple();
+        strategy descFideStrategy = new descFidelidad();
 
         int precioInicial = 0;
         int descuentoFidelidad = 0;
@@ -42,15 +49,10 @@ public class GerenciadorDescuento {
             descuentoCumpleanhos = 100;
 
         //Categoria
-        for (Producto producto : productos) {
-                if (producto.getCategoria().equals("casa"))
-                    descuentoCategoria = 200;
-                break;
-        }
+        descuentoCategoria = descCasa.aplicarDescuento(productos);
 
         //Cantidad Productos
-        if (productos.size() > 2)
-            descuentoCantProductos = 100;
+        descuentoCantProductos = descCantidad.aplicarDescuento(productos);
 
         int precioFinal = precioInicial - descuentoFidelidad - descuentoCumpleanhos - descuentoCategoria -
                 descuentoCantProductos;
