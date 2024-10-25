@@ -147,5 +147,8 @@ Finalmente, se muestran los precios y los diferentes descuentos en varios campos
 
 ### Respuestas 
 
+2) El patrón strategy se usa principalmente para que el programa decida que algoritmo usar según la situación requerida, por lo que es útil en este caso, dado que se tienen diferentes tipos de descuentos, para los cuales se necesita que el programa revise que requerimientos se cumplen para aplicar los distintos descuentos, ya sea de forma individual o agrupados. Al usar strategy, se disminuye el acoplamiento presente entre las opciones de descuento, evitando que todos los procesos se realicen cada vez que se ejecuta el código. 
+
+
 **Importante**: El envío de su proyecto es por plataforma campus virtual en formato .zip o .rar. Verifique que sus cambios
 realmente han sido guardados antes de crear el archivo comprimido. (**Buena Suerte!**)
